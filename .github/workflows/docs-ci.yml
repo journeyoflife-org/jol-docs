@@ -25,7 +25,10 @@ jobs:
         run: npx --yes markdownlint-cli@0.41.0 "**/*.md" --config .markdownlint.yaml --ignore ".venv/**"
 
       - name: Link check (lychee)
-        uses: lycheeverse/lychee-action@v1
+        # Pinned by immutable SHA to v2.9.0. The floating @v1 tag resolves to a
+        # pre-2.0.2 commit vulnerable to CVE-2024-48908 (arbitrary code injection in
+        # the composite action). SHA pinning also prevents tag-mutation attacks.
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8  # v2.9.0
         with:
           args: >-
             --no-progress
