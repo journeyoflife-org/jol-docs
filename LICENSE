@@ -1,0 +1,48 @@
+Copyright (c) 2026 Journey of Life (JOL) — journeyoflife-org
+
+This work — the JOL platform documentation hub (architecture decision records, architecture
+diagrams, GDPR records of processing, and data-flow maps) and all documentation contained in this
+repository — is licensed under the Creative Commons Attribution 4.0 International License
+(CC-BY-4.0).
+
+To view a copy of this license, visit:
+
+    https://creativecommons.org/licenses/by/4.0/legalcode
+
+or send a letter to:
+
+    Creative Commons
+    PO Box 1866
+    Mountain View, CA 94042, USA
+
+-------------------------------------------------------------------------------------
+You are free to:
+
+  Share    — copy and redistribute the material in any medium or format.
+  Adapt    — remix, transform, and build upon the material for any purpose,
+             even commercially.
+
+Under the following terms:
+
+  Attribution — You must give appropriate credit to "Journey of Life (JOL)",
+                provide a link to this license, and indicate if changes were made.
+                You may do so in any reasonable manner, but not in any way that
+                suggests the licensor endorses you or your use.
+
+  No additional restrictions — You may not apply legal terms or technological
+                measures that legally restrict others from doing anything the
+                license permits.
+
+The full, authoritative legal code is incorporated by reference at the canonical URL
+above. Where this summary and the canonical legal code differ, the legal code governs.
+-------------------------------------------------------------------------------------
+
+Third-party content: some documents may quote or reference external standards
+(ISO/IEC 27001:2022, AICPA SOC 2 Trust Services Criteria, EU GDPR, PCI-DSS). Those standards
+remain the property of their respective owners (ISO/IEC, AICPA, the European Union, and the
+PCI Security Standards Council) and are referenced here for mapping purposes only, not
+redistributed.
+
+Diagrams: architecture and data-flow diagrams are authored in Mermaid and render natively on
+GitHub. The Mermaid syntax and rendering engine are the property of their respective authors and
+are used here under their own licences.

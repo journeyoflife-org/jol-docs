@@ -1,0 +1,30 @@
+# markdownlint configuration — https://github.com/DavidAnson/markdownlint
+# Applied by markdownlint-cli (pre-commit, CI, and `make lint`).
+
+default: true
+
+# MD013 line length — prose wraps at 100; tables and code blocks are exempt.
+MD013:
+  line_length: 100
+  tables: false
+  code_blocks: false
+
+# MD024 duplicate headings — allow repeats in different sections (e.g. "Purpose" per policy).
+MD024:
+  siblings_only: true
+
+# MD033 inline HTML — permitted (badges, details, anchors).
+MD033: false
+
+# MD060 table-column-style — disabled. We use standard GFM tables (padded cells with
+# compact `|---|` separator rows) that render correctly on GitHub. MD060's per-table
+# spacing/alignment inference is a recent rule and is too brittle for hand-authored
+# policy prose. Pipe consistency (MD055) and column count (MD056) remain enforced.
+MD060: false
+
+# MD041 first line H1 — every document begins with a single H1 title.
+MD041: true
+
+# MD029 ordered list prefix — allow either consistent numbering style.
+MD029:
+  style: one_or_ordered

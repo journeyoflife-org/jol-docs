@@ -1,0 +1,66 @@
+name: Documentation Gap or Finding
+description: Report a missing, stale, or incorrect document, diagram, ADR, or record of processing.
+title: "[docs] "
+labels: ["documentation", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to report a gap or finding in the JOL platform documentation hub.
+        For security vulnerabilities, do **not** use this form — see SECURITY.md for the
+        private disclosure channel.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of the documentation hub is affected?
+      options:
+        - ADR registry (adr/)
+        - Architecture diagrams (architecture/)
+        - GDPR records of processing (gdpr/)
+        - Compliance control matrix (compliance/)
+        - Guides (guides/)
+        - Repository governance (README/SECURITY/CONTRIBUTING)
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: doc
+    attributes:
+      label: Document ID or path
+      description: For example ADR-011, gdpr/ropa-controller.md, or "missing".
+      placeholder: adr/ADR-011-hub-and-spoke-monorepo-federation.md
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Finding type
+      options:
+        - Missing document
+        - Stale / out of date
+        - Incorrect content
+        - Incomplete record of processing
+        - Broken diagram or link
+        - Compliance gap (SOC 2 / ISO 27001 / GDPR)
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: Detail
+      description: Describe the gap or finding. Reference the code, config, regulation, or audit finding that grounds it.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence / source
+      description: Links to the code, commit, ticket, standard clause, or regulator guidance that supports this finding.
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Data protection
+      options:
+        - label: This report contains no personal data, credentials, or real tenant identifiers.
+          required: true

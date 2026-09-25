@@ -1,0 +1,32 @@
+# CODEOWNERS — JOL Docs (platform documentation hub)
+#
+# Each line is a file pattern followed by one or more owners; the last match wins.
+# NOTE: only teams verified to exist in `journeyoflife-org` are referenced here.
+# (The org's teams are: backend, data, devops, frontend, security.)
+# Owners are expressed as teams; the accountable human role is named in each
+# document's Document-Control block (e.g. "Platform Architect", "Data Protection Officer").
+
+# Default ownership — security governs the documentation hub.
+*                                   @journeyoflife-org/security
+
+# Architecture Decision Records — platform architecture + security review.
+adr/                                @journeyoflife-org/security @journeyoflife-org/backend
+
+# Architecture diagrams — backend + devops (infrastructure) review.
+architecture/                       @journeyoflife-org/backend @journeyoflife-org/devops
+
+# GDPR records of processing and data-flow maps — security (DPO function) review.
+gdpr/                               @journeyoflife-org/security
+
+# Compliance crosswalks — security review.
+compliance/                         @journeyoflife-org/security
+
+# Security- and governance-sensitive paths.
+SECURITY.md                         @journeyoflife-org/security
+CODE_OF_CONDUCT.md                  @journeyoflife-org/security
+LICENSE                             @journeyoflife-org/security
+.github/CODEOWNERS                  @journeyoflife-org/security
+.github/workflows/                  @journeyoflife-org/security
+
+# CI / dependency automation.
+.github/dependabot.yml              @journeyoflife-org/security
