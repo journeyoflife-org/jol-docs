@@ -16,11 +16,11 @@
 
 ## Purpose
 
-This is the record of processing activities JOL performs **on behalf of tenant controllers**
-(GDPR Art. 30(2)). For this data the **tenant institution is the controller** and determines the
-purpose; **JOL is the processor** and acts only on documented instructions (Art. 28(3)). This is the
-majority of personal data on the platform — the content and submissions flowing through ~400,000
-tenant websites.
+This is the record of processing activities JOL performs **on behalf of tenant controllers**, as
+required by GDPR **Article 30(2)**. For this data the **tenant institution is the controller**
+and determines the purpose; **JOL is the processor** and acts only on documented instructions
+(Art. 28(3)). This is the majority of personal data on the platform — the content and submissions
+flowing through ~400,000 tenant websites.
 
 > Because JOL processes on behalf of a very large number of controllers, this record describes
 > **categories** of controllers and processing rather than enumerating each. The register of

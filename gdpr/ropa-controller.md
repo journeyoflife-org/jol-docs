@@ -16,11 +16,12 @@
 
 ## Purpose
 
-This is the record of processing activities for which **Journey of Life (JOL) acts as the
-controller** — i.e. JOL determines the purposes and means. This covers JOL's **own** processing:
-platform user accounts (tenant administrators), JOL's commercial relationship with tenant
-institutions, security logging, and platform analytics. Processing carried out **on behalf of**
-tenants is recorded separately in [`ropa-processor.md`](ropa-processor.md).
+This is the record of processing activities required by GDPR **Article 30(1)** for which
+**Journey of Life (JOL) acts as the controller** — i.e. JOL determines the purposes and means.
+This covers JOL's **own** processing: platform user accounts (tenant administrators), JOL's
+commercial relationship with tenant institutions, security logging, and platform analytics.
+Processing carried out **on behalf of** tenants is recorded separately in
+[`ropa-processor.md`](ropa-processor.md).
 
 > This record uses **categories**, never real individuals. Synthetic identifiers only.
 

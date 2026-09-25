@@ -74,12 +74,17 @@ a Change-History row. Numbers are never reused.
 These ADRs live in their service repositories and are indexed here for discoverability. The owning
 repository is the source of truth for their content.
 
-| ADR | Title | Repository | Path |
-|-----|-------|------------|------|
-| ADR-001 | Issuer and Discovery Configuration | `jol-auth` | [`docs/ADR/ADR-001-issuer-and-discovery.md`](https://github.com/journeyoflife-org/jol-auth/blob/main/docs/ADR/ADR-001-issuer-and-discovery.md) |
-| ADR-002 | Tenant Boundary Definition | `jol-auth` | [`docs/ADR/ADR-002-tenant-boundary.md`](https://github.com/journeyoflife-org/jol-auth/blob/main/docs/ADR/ADR-002-tenant-boundary.md) |
-| ADR-003 | Token Signing and JWKS Strategy | `jol-auth` | [`docs/ADR/ADR-003-token-signing-and-jwks.md`](https://github.com/journeyoflife-org/jol-auth/blob/main/docs/ADR/ADR-003-token-signing-and-jwks.md) |
-| ADR-004 | Session Storage Strategy | `jol-auth` | [`docs/ADR/ADR-004-session-storage.md`](https://github.com/journeyoflife-org/jol-auth/blob/main/docs/ADR/ADR-004-session-storage.md) |
+| ADR | Title | Repository | Path within that repository |
+|-----|-------|------------|-----------------------------|
+| ADR-001 | Issuer and Discovery Configuration | [`jol-auth`](https://github.com/journeyoflife-org/jol-auth) | `docs/ADR/ADR-001-issuer-and-discovery.md` |
+| ADR-002 | Tenant Boundary Definition | [`jol-auth`](https://github.com/journeyoflife-org/jol-auth) | `docs/ADR/ADR-002-tenant-boundary.md` |
+| ADR-003 | Token Signing and JWKS Strategy | [`jol-auth`](https://github.com/journeyoflife-org/jol-auth) | `docs/ADR/ADR-003-token-signing-and-jwks.md` |
+| ADR-004 | Session Storage Strategy | [`jol-auth`](https://github.com/journeyoflife-org/jol-auth) | `docs/ADR/ADR-004-session-storage.md` |
+
+> **Publication status.** These four ADRs are recorded in the `jol-auth` working tree but are
+> **not yet published** to that repository's default branch, so deep links would 404. The paths
+> above are therefore given as code, not links. Once `jol-auth/docs/ADR/` is pushed, replace each
+> path with a link to the published file.
 
 When a service-local decision acquires platform-wide impact, it is **promoted**: a new
 platform-wide ADR is written in this registry that references the originating local ADR, and the
