@@ -30,7 +30,7 @@ dedicated repositories:
 | DPIAs, DSRs, breaches | [`jol-privacy`](https://github.com/journeyoflife-org/jol-privacy) |
 | PCI-DSS scope / CDE | [`jol-payments-scope`](https://github.com/journeyoflife-org/jol-payments-scope) |
 | Repo-level enforced controls | [`jol-control`](https://github.com/journeyoflife-org/jol-control) |
-| Disaster recovery / RTO-RPO | [`jol-dr`](https://github.com/journeyoflife-org/jol-dr) |
+| Disaster recovery / RTO-RPO | `jol-dr` (private) |
 | Incident response | [`jol-incident-response`](https://github.com/journeyoflife-org/jol-incident-response) |
 
 ## Documents
