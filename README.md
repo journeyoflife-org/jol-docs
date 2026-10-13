@@ -43,6 +43,7 @@ their repositories and are indexed here.
 | [ADR-009](adr/ADR-009-mcp-tool-integration.md) | MCP Servers for Tool-Augmented AI | Accepted |
 | [ADR-010](adr/ADR-010-ecommerce-pci-saq-a.md) | E-Commerce Payments Scoped to PCI-DSS SAQ A | Accepted |
 | [ADR-011](adr/ADR-011-hub-and-spoke-monorepo-federation.md) | Hub-and-Spoke Monorepo Federation | Accepted |
+| [ADR-012](adr/ADR-012-local-terraform-state-on-charity-hardware.md) | Local Terraform State on Charity Hardware | Proposed |
 
 ### Architecture — [`architecture/`](architecture/README.md)
 

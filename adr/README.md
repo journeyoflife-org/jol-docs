@@ -64,6 +64,7 @@ a Change-History row. Numbers are never reused.
 | [ADR-009](ADR-009-mcp-tool-integration.md) | MCP Servers for Tool-Augmented AI | Accepted | Platform Architect | AI tool integration |
 | [ADR-010](ADR-010-ecommerce-pci-saq-a.md) | E-Commerce Payments Scoped to PCI-DSS SAQ A | Accepted | Platform Architect / CISO | PCI-DSS scope reduction |
 | [ADR-011](ADR-011-hub-and-spoke-monorepo-federation.md) | Hub-and-Spoke Monorepo Federation | Accepted | Platform Architect | 400K sites, shared packages |
+| [ADR-012](ADR-012-local-terraform-state-on-charity-hardware.md) | Local Terraform State on Charity Hardware | Proposed | Platform Architect | GDPR data-residency, ISO 27001 A.5.14 |
 
 > **Note on numbering.** ADR-001 through ADR-004 were assigned inside the `jol-auth` service before
 > this central registry existed. They remain valid as **service-local** ADRs and are indexed below;
@@ -94,9 +95,12 @@ local ADR is marked as superseded by the platform record.
 
 1. Copy [`template.md`](template.md) to `ADR-NNN-short-kebab-title.md` (next free number).
 2. Fill in Document Control, Status (`Proposed`), Context, Decision, Consequences, and Evidence.
-3. Open a pull request; the Platform Architect reviews (CODEOWNERS).
-4. On approval, set Status to `Accepted`, add the row to the index above, and record the change in
-   [`../CHANGELOG.md`](../CHANGELOG.md).
+3. Add the row to the index above **when the file is created**, using its real status
+   (`Proposed`). This is enforced, not stylistic: `compliance-check.yml` fails any `ADR-*.md` whose
+   id does not appear in this file, so an ADR submitted without a row cannot pass CI.
+4. Open a pull request; the Platform Architect reviews (CODEOWNERS).
+5. On approval, set Status to `Accepted` in both the ADR and its index row, and record the change
+   in [`../CHANGELOG.md`](../CHANGELOG.md).
 
 See [`../guides/adding-an-adr.md`](../guides/adding-an-adr.md) for the full workflow.
 

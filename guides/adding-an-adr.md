@@ -63,11 +63,14 @@ cp adr/template.md adr/ADR-012-your-decision-title.md
   Protection Officer.
 - Use the [*ADR Proposal*](../.github/ISSUE_TEMPLATE/adr-proposal.yml) issue to socialise a big
   decision first if useful.
+- Add the index row in [`../adr/README.md`](../adr/README.md) **before** opening the pull
+  request, with the real status (`Proposed`): `compliance-check.yml` fails any `ADR-*.md`
+  whose id is not indexed there.
 
 ### 5. On approval
 
 - Set **Status** to `Accepted`, set the **Effective Date**, bump version to `1.0.0`.
-- Add the row to the index in [`../adr/README.md`](../adr/README.md).
+- Set the index row's **Status** to `Accepted` (the row already exists from step 4).
 - Add an entry to [`../CHANGELOG.md`](../CHANGELOG.md).
 - Update any architecture diagram the decision changes
   ([`../architecture/`](../architecture/README.md)).

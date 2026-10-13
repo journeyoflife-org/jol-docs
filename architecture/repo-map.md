@@ -63,7 +63,7 @@ graph TD
 | [`jol-privacy`](https://github.com/journeyoflife-org/jol-privacy) | DPIAs, data mapping, lawful-basis records, DSR handling |
 | [`jol-secrets`](https://github.com/journeyoflife-org/jol-secrets) | Secrets management design, rotation, key management |
 | [`jol-iac`](https://github.com/journeyoflife-org/jol-iac) | IaC templates and shared modules |
-| [`jol-dr`](https://github.com/journeyoflife-org/jol-dr) | Disaster recovery, RTO/RPO, backup, continuity |
+| `jol-dr` (private) | Disaster recovery, RTO/RPO, backup, continuity |
 | [`jol-incident-response`](https://github.com/journeyoflife-org/jol-incident-response) | IR runbooks, escalation, post-incident review |
 | [`jol-payments-scope`](https://github.com/journeyoflife-org/jol-payments-scope) | PCI-DSS scope, CDE boundaries, card data-flow |
 | [`jol-status`](https://github.com/journeyoflife-org/jol-status) | Public status page and incident communication |
