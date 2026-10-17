@@ -64,6 +64,7 @@ a Change-History row. Numbers are never reused.
 | [ADR-009](ADR-009-mcp-tool-integration.md) | MCP Servers for Tool-Augmented AI | Accepted | Platform Architect | AI tool integration |
 | [ADR-010](ADR-010-ecommerce-pci-saq-a.md) | E-Commerce Payments Scoped to PCI-DSS SAQ A | Accepted | Platform Architect / CISO | PCI-DSS scope reduction |
 | [ADR-011](ADR-011-hub-and-spoke-monorepo-federation.md) | Hub-and-Spoke Monorepo Federation | Accepted | Platform Architect | 400K sites, shared packages |
+| [ADR-013](ADR-013-declarative-protection-and-approval-capacity.md) | Declarative Protection and Approval Capacity | Proposed | Platform Architect / CISO | SOC 2 CC8.1, ISO 27001 A.8.32 |
 
 > **Note on numbering.** ADR-001 through ADR-004 were assigned inside the `jol-auth` service before
 > this central registry existed. They remain valid as **service-local** ADRs and are indexed below;
