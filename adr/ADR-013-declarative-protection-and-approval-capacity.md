@@ -1,12 +1,12 @@
-# ADR-013: Branch protection must be declarative, and no control may demand more approvals than the organization can supply
+# ADR-013: Declarative Protection and Approval Capacity
 
 ## Document Control
 
 | Field            | Value                              |
 |------------------|------------------------------------|
 | Document ID      | ADR-013                            |
-| Title            | Declarative protection and approval capacity |
-| Version          | 0.1.0                              |
+| Title            | Declarative Protection and Approval Capacity |
+| Version          | 0.2.0                              |
 | Classification   | Public                             |
 | Owner (role)     | Platform Architect                 |
 | Approver (role)  | JOL Governance Board               |
@@ -104,10 +104,15 @@ than an absent one, because it conditions operators on bypassing it.
   organization's secure-2FA requirement. Approvals become re-enabled declaratively at that
   point. Until then the declared posture is honestly "single maintainer, integrity controls
   only": signed commits, linear history, no force-push, no deletion, admin enforcement.
-- Ordering: relax the 19 undeclared review requirements and register the change, **then** accept
-  this ADR, **then** add the detection work. The relaxation is a drift correction against an
-  already-declared posture and needs no new architecture decision; converting rulesets into
-  managed resources does.
+- Ordering: **accept this ADR first**, then relax the 19 undeclared review requirements under
+  `docs/runbooks.md` RB-06 with a snapshot taken before each write, then declare the rulesets
+  that must remain (`v*` tag protection) as managed resources, then extend `drift_detect.py`.
+  An earlier draft of this document put the relaxation before acceptance, on the argument that
+  relaxing is a drift correction against the already-declared `solo_mode` posture and so needs
+  no new decision. That ordering is withdrawn: the relaxation still removes a control, and
+  `required_approving_review_count` is on `jol-control` AGENTS.md's list of values requiring
+  explicit in-session human approval. A decision record written after a change documents it;
+  written before, it authorises one.
 
 ## Consequences
 
@@ -181,3 +186,4 @@ than an absent one, because it conditions operators on bypassing it.
 | Version | Date | Author (role) | Change |
 |---------|------|---------------|--------|
 | 0.1.0 | 2026-10-17 | Platform Architect | Initial draft. Records the measured divergence between declared and enforced protection, the approval-capacity invariant, and the ruleset constraints that rule out a single-mechanism answer. Status Proposed: the relaxation of 19 rulesets and the import of rulesets into the baseline both await owner approval. |
+| 0.2.0 | 2026-10-17 | Platform Architect | Pre-acceptance revision, both corrections found by verification rather than by review. (1) The heading conformed to the registry's short-title style: CI run 39028870034 failed `markdownlint` MD013 on the 123-character sentence heading, which local checks had not caught because they verified size and link resolution only. (2) The Ordering decision reversed from relax-then-accept to **accept-then-relax**, removing a contradiction with `jol-control` `docs/drift-findings.md` S1-008 and ensuring the removal of a review control is authorised by this record instead of documented after it. |
