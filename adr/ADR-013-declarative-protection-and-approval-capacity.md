@@ -6,7 +6,7 @@
 |------------------|------------------------------------|
 | Document ID      | ADR-013                            |
 | Title            | Declarative Protection and Approval Capacity |
-| Version          | 0.2.0                              |
+| Version          | 0.3.0                              |
 | Classification   | Public                             |
 | Owner (role)     | Platform Architect                 |
 | Approver (role)  | JOL Governance Board               |
@@ -17,6 +17,13 @@
 ## Status
 
 Proposed
+
+**Implementation status, measured 2026-10-19.** Nothing in this ADR has been applied: no
+ruleset has been relaxed (19 repositories still demand a review nobody can give), this ADR is
+still an open pull request rather than an accepted record, and the capacity invariant in the
+Decision section is **not yet encoded as a test** — `ls scripts/` contains no capacity or
+review-requirement checker, so the promise in this document is currently unmet and remains
+open work rather than an accomplished control.
 
 <!-- Once Accepted, never rewrite Decision/Consequences — supersede with a new ADR instead. -->
 
@@ -32,14 +39,22 @@ excluded from both tiers, so `jol-dr` has no managed protection. `solo_mode = tr
 `required_status_checks` while retaining `require_signed_commits`, `required_linear_history`,
 force-push and deletion blocks, `enforce_admins`, and `prevent_destroy`.
 
-**Installed by hand.** A scan of all 40 public repositories on 2026-10-16 found **21 rulesets
-across 19 repositories that require at least one approving review, code-owner approval, or
-both** — precisely the gates `solo_mode` removes. The organization has one member, and GitHub
-does not accept an author's approval of their own change, so **these requirements cannot be
-satisfied by anyone**. Affected: jol-compliance (two rulesets, one named `Protect main branch`),
-jol-hub (two, one named `~master` whose include pattern is `~DEFAULT_BRANCH`), jol-deploy,
-jol-domain-taxonomy, jol-ecommerce-engine, jol-hermes-agents, jol-infrastructure, jol-llm,
-jol-rag-server and the ten `jol-site-*` spokes.
+**Installed by hand.** A scan of every repository in the organization, first run 2026-10-16 and
+re-run 2026-10-19, finds **20 active rulesets across 19 repositories that require at least one
+approving review, code-owner approval, or both** — precisely the gates `solo_mode` removes.
+By requirement: **17 repositories demand ≥ 1 approving review** and **19 demand code-owner
+review**. The organization has one member, and GitHub does not accept an author's approval of
+their own change, so **these requirements cannot be satisfied by anyone**. Affected:
+jol-compliance, jol-domain-taxonomy, jol-ecommerce-engine, jol-hermes-agents, jol-hub, jol-llm
+and jol-rag-server (approval + code owner), jol-deploy and jol-infrastructure (code owner
+only), and the ten `jol-site-*` spokes (both). Three details the first scan understated:
+jol-hub carries **two** such rulesets (`protect-main` and one named `~master` whose include
+pattern is `~DEFAULT_BRANCH`); jol-compliance carries a second ruleset `Protect main branch`
+that is `disabled`, so it enforces nothing while looking like a control; and `.github`'s
+ruleset now measures `required_approving_review_count: 0` with
+`require_code_owner_review: false`, so it is **not** among the 19 — the code-owner flag this
+organization previously recorded as unsatisfiable on that repository has since been turned
+off, by a change this control plane did not declare and cannot attribute.
 
 Observed effects, all measured rather than inferred:
 
@@ -49,8 +64,9 @@ Observed effects, all measured rather than inferred:
   while that repository's own changelog has stated since 2026-09-12 that code-owner review is
   "declarative, not substantive" and that the bypass "is not an approved merge path".
 - **13 of the 24 repositories still publishing an undeliverable contact address also carry an
-  unsatisfiable ruleset**, so the outstanding remediation (S1-003) would deliver pull requests
-  mergeable only by the same bypass.
+  unsatisfiable ruleset** (re-measured 2026-10-19: the intersection is still exactly 13), so
+  the outstanding remediation (S1-003) would deliver pull requests mergeable only by the same
+  bypass. The other 11 are sweepable without one.
 - `make drift` reports NO DRIFT while this is happening: `scripts/drift_detect.py` reads only
   `name,visibility` (`grep -c ruleset` returns `0`), and no `github_repository_ruleset` resource
   exists in the baseline, so `terraform apply` can neither revert nor converge any of it.
@@ -165,8 +181,9 @@ than an absent one, because it conditions operators on bypassing it.
   - `gh api "orgs/journeyoflife-org/repos?per_page=100" --jq 'length'` → `41`;
     `ls repos/*.yml | wc -l` → `40`; the difference is `.github`
   - per repository `GET /repos/{owner}/{repo}/rulesets`, then each
-    `GET /repos/{owner}/{repo}/rulesets/{id}` → 21 rulesets on 19 repositories with
-    `required_approving_review_count > 0` or `require_code_owner_review`
+    `GET /repos/{owner}/{repo}/rulesets/{id}`, keeping only `enforcement == active` and
+    `rules[type == "pull_request"]` → **20 requirement-bearing rulesets across 19
+    repositories** (24 rulesets exist in total across the fleet)
   - `GET /repos/journeyoflife-org/jol-dr/rulesets` →
     `403 Upgrade to GitHub Pro or make this repository public to enable this feature`
   - `GET /orgs/journeyoflife-org/rulesets` → `403 Upgrade to GitHub Team`
@@ -187,3 +204,4 @@ than an absent one, because it conditions operators on bypassing it.
 |---------|------|---------------|--------|
 | 0.1.0 | 2026-10-17 | Platform Architect | Initial draft. Records the measured divergence between declared and enforced protection, the approval-capacity invariant, and the ruleset constraints that rule out a single-mechanism answer. Status Proposed: the relaxation of 19 rulesets and the import of rulesets into the baseline both await owner approval. |
 | 0.2.0 | 2026-10-17 | Platform Architect | Pre-acceptance revision, both corrections found by verification rather than by review. (1) The heading conformed to the registry's short-title style: CI run 39028870034 failed `markdownlint` MD013 on the 123-character sentence heading, which local checks had not caught because they verified size and link resolution only. (2) The Ordering decision reversed from relax-then-accept to **accept-then-relax**, removing a contradiction with `jol-control` `docs/drift-findings.md` S1-008 and ensuring the removal of a review control is authorised by this record instead of documented after it. |
+| 0.3.0 | 2026-10-19 | Platform Architect | Evidence re-measured against the live organization after reports arrived claiming the relaxation had already been applied. It has not: **20 active requirement-bearing rulesets across 19 repositories** (17 requiring an approving review, 19 requiring code-owner review) replace the draft's "21 rulesets across 19 repositories", `jol-compliance`'s second ruleset is `disabled`, `.github` now measures `count=0 / codeowner=false` and is therefore not in the 19, and the 13-of-24 sweep collision re-measured unchanged. Added an implementation-status note recording that the promised capacity test does not exist yet, so an accepted ADR cannot be read as a completed control. |
