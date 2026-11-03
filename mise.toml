@@ -1,0 +1,10 @@
+[tools]
+node = "20"
+
+[tasks.lint]
+description = "markdownlint (mirrors CI Lint & link-check and Makefile lint)"
+run = "npx --yes markdownlint-cli@0.41.0 \"**/*.md\" --config .markdownlint.yaml"
+
+[tasks.links]
+description = "link check (mirrors Makefile links)"
+run = "find . -path ./.venv -prune -o -name '*.md' -print | xargs -r npx --yes markdown-link-check -q"

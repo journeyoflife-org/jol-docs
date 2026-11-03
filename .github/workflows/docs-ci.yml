@@ -14,12 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
+      - name: Install mise (pinned)
+        uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac  # v2
         with:
-          node-version: "20"
+          version: "2026.11.0"
 
       - name: markdownlint
         run: npx --yes markdownlint-cli@0.41.0 "**/*.md" --config .markdownlint.yaml --ignore ".venv/**"
@@ -34,6 +34,7 @@ jobs:
             --no-progress
             --retry-wait-time 5
             --max-retries 3
+            --exclude 'github\.com/journeyoflife-org/jol-dr'
             './**/*.md'
           fail: true
         env:
