@@ -6,24 +6,28 @@
 |------------------|------------------------------------|
 | Document ID      | ADR-013                            |
 | Title            | Declarative Protection and Approval Capacity |
-| Version          | 0.3.0                              |
+| Version          | 1.0.0                              |
 | Classification   | Public                             |
 | Owner (role)     | Platform Architect                 |
 | Approver (role)  | JOL Governance Board               |
-| Effective Date   | — (not yet Accepted)               |
-| Next Review      | — (one year after Acceptance)      |
+| Effective Date   | 2026-11-04               |
+| Next Review      | 2027-11-04 (annual)      |
 | Review Cycle     | Annual, or upon material change    |
 
 ## Status
 
-Proposed
+Accepted
 
-**Implementation status, measured 2026-10-19.** Nothing in this ADR has been applied: no
-ruleset has been relaxed (19 repositories still demand a review nobody can give), this ADR is
-still an open pull request rather than an accepted record, and the capacity invariant in the
-Decision section is **not yet encoded as a test** — `ls scripts/` contains no capacity or
-review-requirement checker, so the promise in this document is currently unmet and remains
-open work rather than an accomplished control.
+**Status history:** accepted 2026-11-04 by the organization owner — the sole member of
+the JOL Governance Board — which authorizes proceeding with the reversible, per-repository
+ruleset relaxation recorded in `jol-control` `docs/ruleset-relaxation-plan.md` (each change
+still gated on an explicit owner go and executed via runbook RB-06).
+
+**Implementation status, measured 2026-11-04.** The decision is accepted, but **no
+enforcement has been changed yet**: 19 repositories still demand a review nobody can give,
+and the capacity invariant below is **still not encoded as a test** (`scripts/` holds no
+capacity or review-requirement checker). Acceptance authorizes the relaxation work; it does
+not assert the work is done. Both remain open, gated follow-ups.
 
 <!-- Once Accepted, never rewrite Decision/Consequences — supersede with a new ADR instead. -->
 
